@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import Toolbar from "./components/Toolbar/Toolbar";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
 
-function App() {
+class App extends Component {
   // set up an initial state whether the side drawer is visible or not.
   // we can call this state
   state = {
@@ -22,24 +22,25 @@ function App() {
     });
   };
 
-  let sideDrawer;
-  let backdrop;
+  render() {
+    let sideDrawer;
+    let backdrop;
 
-  if (this.state.sideDrawerOpen) {
-    sideDrawer = <SideDrawer />;
-    backdrop = <Backdrop />;
+    if (this.state.sideDrawerOpen) {
+      sideDrawer = <SideDrawer />;
+      backdrop = <Backdrop />;
+    }
+    return (
+      <div style={{ height: "100%" }}>
+        <Toolbar />
+        {sideDrawer}
+        {backdrop}
+        <main style={{ marginTop: "64px" }}>
+          <p>This is the page content!</p>
+        </main>
+      </div>
+    );
   }
-
-  return (
-    <div style={{ height: "100%" }}>
-      <Toolbar />
-      {sideDrawer}
-      {backdrop}
-      <main style={{ marginTop: "64px" }}>
-        <p>This is the page content!</p>
-      </main>
-    </div>
-  );
 }
 
 export default App;
