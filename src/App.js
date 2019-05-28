@@ -51,20 +51,23 @@ class App extends Component {
     });
   };
 
+  // this will always close the drawer
+  backdropClickHandler = () => {
+    this.setState({ sideDrawerOpen: false });
+  };
+
   render() {
-    let sideDrawer;
     let backdrop;
 
     // If the state of sideDrawerOpen is true, we will render out via these references.
     if (this.state.sideDrawerOpen) {
-      sideDrawer = <SideDrawer />;
-      backdrop = <Backdrop />;
+      backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
     return (
       <div style={{ height: "100%" }}>
         {/* Here we pass the function as a reference (with props) to Toolbar*/}
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
-        {sideDrawer}
+        <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}
         <main style={{ marginTop: "64px" }}>
           <p>This is the page content!</p>

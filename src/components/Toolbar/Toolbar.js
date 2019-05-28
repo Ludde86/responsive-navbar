@@ -18,7 +18,7 @@ const toolbar = props => {
 const toolbar = props => (
   <header className="toolbar">
     <nav className="toolbar-navigation">
-      <div>
+      <div className="toolbar-toggle-button">
         {/* And here we forward it to the DrawerToggleButton by using the function reference */}
         {/* Which we receive on these props */}
         {/* And passing it to the click-props on the DrawerToogleButton */}
